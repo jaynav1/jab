@@ -12,15 +12,16 @@ module.exports = {
 		data = []
 		waApi.getFull(arguments)
 			.then((queryresult) => {
-				console.log(queryresult.pods)
-				for(i in queryresult.pods) {
-					data.push(queryresult.pods[i])
-				}
+				data = queryresult
+
 				console.log(data)
+				for(i in pods){
+					
+				}
 
 
 
-				
+
 			}).catch(console.error)
 		
 	}
