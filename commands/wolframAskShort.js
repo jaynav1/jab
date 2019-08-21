@@ -7,7 +7,11 @@ module.exports = {
 	description: 'get results from wolfram',
 	execute(client, receivedMessage, arguments) {
 		arguments = arguments.join(' ')
-		waApi.getFull(arguments).then(console.log).catch(console.error)
+		waApi.getShort(arguments)
+			.then((queryresult) => {
+				console.log(queryresult)
+				receivedMessage.channel.send(queryresult)
+			}).catch(console.error)
         
 	}
 }
