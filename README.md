@@ -1,2 +1,2 @@
 # JAB
- Discord bot.
+ Discord bot made in node.js
