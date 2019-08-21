@@ -6,8 +6,8 @@ module.exports = {
 	name: 'ask',
 	description: 'get results from wolfram',
 	execute(client, receivedMessage, arguments) {
-		arguments = arguments.join('+')
-		waApi.
+		arguments = arguments.join(' ')
+		waApi.getFull(arguments).then(console.log).catch(console.error)
         
 	}
 }
