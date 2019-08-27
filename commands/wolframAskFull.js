@@ -10,14 +10,9 @@ module.exports = {
 	execute(client, receivedMessage, arguments) {
 		arguments = arguments.join(' ')
 		data = []
-		waApi.getFull(arguments)
+		waApi.getFull({input: arguments, output: "json"})
 			.then((queryresult) => {
-				data = queryresult
-
-				console.log(data)
-				for(i in pods){
-					
-				}
+				console.log(queryresult)
 
 
 
