@@ -1,11 +1,9 @@
 const fs = require('fs')
 const Discord = require('discord.js')
-const Parser = require('rss-parser')
 const fetch = require('node-fetch')
 const { prefix, token } = require('./config.json')
 
 
-const parser = new Parser()
 const client = new Discord.Client()
 client.commands = new Discord.Collection();
 
