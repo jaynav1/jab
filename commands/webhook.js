@@ -6,12 +6,16 @@ module.exports = {
 	name: 'hook',
 	description: 'impersonate users on server',
 	execute(client, receivedMessage, arguments) {
-        var user,text = arguments
-        console.log(client.users.get(user))
-        
+        console.log(arguments)
+        var [user, ...text] = arguments
+        taggedUser = receivedMessage.mentions.users.first()
+        console.log(text)
+        var message = text.join(" ")
+        console.log(taggedUser)
         const msg = new webhook.MessageBuilder()
-                .setName('hello')
-                .setText('hello')
+                .setName(taggedUser.username)
+                .setText(message)
+                .setAvatar(taggedUser.avatarURL)
         Hook.send(msg);
         receivedMessage.channel.send("Webhook sent!")
 	}
