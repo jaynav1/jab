@@ -6,13 +6,21 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaynav1/jab.git"
+  },
   "author": "Jaylen",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaynav1/jab/issues"
+  },
   "dependencies": {
     "discord.js": "^11.5.1",
     "node-fetch": "^2.6.0",
     "webhook-discord": "^3.5.1",
     "wolfram-alpha-api": "https://products.wolframalpha.com/api/libraries/javascript/wolfram-alpha-api-1.0.0-rc.1.tgz",
-    "xml2js": "^0.4.19"
+    "xml2js": "^0.4.23"
   }
+  "homepage": "https://github.com/jaynav1/jab"
 }
