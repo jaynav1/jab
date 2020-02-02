@@ -6,9 +6,10 @@ module.exports = {
 	name: 'hook',
 	description: 'impersonate users on server',
 	execute(client, receivedMessage, arguments) {
-        user,text = arguments.split(' ')
+        user,text = arguments
+        client.users.get(user)
         const msg = new webhook.MessageBuilder()
-                .setName()
+                .setName(user)
                 .setText(text)
         Hook.send(msg);
         receivedMessage.channel.send("Webhook sent!")
