@@ -5,11 +5,11 @@ module.exports = {
 	name: 'qrcode',
 	description: 'generate qr code',
 	execute(client, receivedMessage, arguments) {
-        fetch(`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${arguments}`)
-            .then(response => response.json())
+        fetch(`http://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=${arguments}.png`)
+            .then(response => response.blob())
             .then(response => {
                 console.log(response)
-                receivedMessage.channel.send(response.url)
+                receivedMessage.channel.send("here is your qrcode", {files: [`http://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=${arguments}`]})
             })
         
 	}
