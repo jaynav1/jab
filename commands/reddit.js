@@ -16,7 +16,7 @@ module.exports = {
                     pages.push(post.data)
                 })
                 console.log(pages)
-                const redEmbed = new Discord.RichEmbed()
+                const redEmbed = new Discord.MessageEmbed()
                     .setColor(0xffffff)
                     .setFooter(`Submitted by u/${pages[page - 1].author} | Post ${page} of ${pages.length}`)
                     .setTitle(pages[page - 1].title)
