@@ -16,11 +16,11 @@ for (const file of commandFiles) {
 
 
 //_________________________________Connect_____________________________
-client.on('ready', () => {
+client.once('ready', () => {
   console.log("Connected as " + client.user.tag)
 })
 //_________________________________Status_______________________________
-client.on('ready', () => {
+client.once('ready', () => {
   // Set bot status to: "Playing with JavaScript"
   client.user.setActivity("the void", {type: "LISTENING"})
 
