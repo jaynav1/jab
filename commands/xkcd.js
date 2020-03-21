@@ -11,7 +11,7 @@ module.exports = {
                 .then(data => obj = data)
                 .then(() => {
                     console.log(obj)
-                    XkcdEmbed = new Discord.RichEmbed()
+                    XkcdEmbed = new Discord.MessageEmbed()
                         .setAuthor(("xkcd #" + obj.num + " | " + obj.safe_title), "https://avatars.githubusercontent.com/u/428146?v=3", "https://xkcd.com/" + obj.num )
                         .setImage(obj.img)
                         .setColor(0xDCDCDC)
