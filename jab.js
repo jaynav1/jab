@@ -1,6 +1,5 @@
 const fs = require('fs')
 const Discord = require('discord.js')
-const fetch = require('node-fetch')
 const { prefix, token } = require('./config.json')
 
 
