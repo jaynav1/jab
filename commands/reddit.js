@@ -16,9 +16,10 @@ module.exports = {
                     pages.push(post.data)
                 })
                 console.log(pages)
+                console.log(pages[0])
                 const redEmbed = new Discord.MessageEmbed()
                     .setColor(0xffffff)
-                    .setFooter(`Submitted by u/${pages[page - 1].author} | Post ${page} of ${pages.length}`)
+                    .setFooter(`${pages[page - 1].score} upvotes | Submitted by u/${pages[page - 1].author} | Post ${page} of ${pages.length}`)
                     .setTitle(pages[page - 1].title)
                     .setDescription(pages[page - 1].selftext)
                     .setImage(pages[page - 1].url)
@@ -41,7 +42,7 @@ module.exports = {
                                 return
                             }
                             page--
-                            redEmbed.setFooter(`Submitted by u/${pages[page - 1].author} | Post ${page} of ${pages.length}`)
+                            redEmbed.setFooter(`${pages[page - 1].score} upvotes | Submitted by u/${pages[page - 1].author} | Post ${page} of ${pages.length}`)
                             redEmbed.setTitle(pages[page - 1].title)
                             redEmbed.setDescription(pages[page - 1].selftext)
                             redEmbed.setImage(pages[page - 1].url)
@@ -56,7 +57,7 @@ module.exports = {
                                 return
                             }
                             page++
-                            redEmbed.setFooter(`Submitted by u/${pages[page - 1].author} | Post ${page} of ${pages.length}`)
+                            redEmbed.setFooter(`${pages[page - 1].score} upvotes | Submitted by u/${pages[page - 1].author} | Post ${page} of ${pages.length}`)
                             redEmbed.setTitle(pages[page - 1].title)
                             redEmbed.setDescription(pages[page - 1].selftext)
                             redEmbed.setImage(pages[page - 1].url)
