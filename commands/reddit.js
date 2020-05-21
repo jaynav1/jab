@@ -1,6 +1,8 @@
 const fetch = require('node-fetch')
 const Discord = require('discord.js')
 
+
+
 module.exports = {
 	name: 'reddit',
 	description: 'look at the subreddits',
@@ -24,17 +26,27 @@ module.exports = {
                     .setDescription(pages[page - 1].selftext)
                     .setImage(pages[page - 1].url)
                     .setURL(`https://reddit.com${pages[page - 1].permalink}`)
+
+                
                 
                 receivedMessage.channel.send(redEmbed).then(msg => {
                     
                     msg.react('◀').then( r => {
                         msg.react('▶')
-                    
 
                         const backwardsFilter = (reaction, user) => reaction.emoji.name === '◀' && user.id === receivedMessage.author.id
                         const forwardsFilter = (reaction, user) => reaction.emoji.name === '▶' && user.id === receivedMessage.author.id
                         const backwards = msg.createReactionCollector(backwardsFilter, {time: 60000})
                         const forwards = msg.createReactionCollector(forwardsFilter, {time: 60000})
+
+                        function update() {
+                            redEmbed.setFooter(`${pages[page - 1].score} upvotes | Submitted by u/${pages[page - 1].author} | Post ${page} of ${pages.length}`)
+                            redEmbed.setTitle(pages[page - 1].title)
+                            redEmbed.setDescription(pages[page - 1].selftext)
+                            redEmbed.setImage(pages[page - 1].url)
+                            redEmbed.setURL(`https://reddit.com${pages[page - 1].permalink}`)
+                            msg.edit(redEmbed)
+                        }
 
                         backwards.on('collect', r => {
                             if (page === 1) {
@@ -42,12 +54,7 @@ module.exports = {
                                 return
                             }
                             page--
-                            redEmbed.setFooter(`${pages[page - 1].score} upvotes | Submitted by u/${pages[page - 1].author} | Post ${page} of ${pages.length}`)
-                            redEmbed.setTitle(pages[page - 1].title)
-                            redEmbed.setDescription(pages[page - 1].selftext)
-                            redEmbed.setImage(pages[page - 1].url)
-                            redEmbed.setURL(`https://reddit.com${pages[page - 1].permalink}`)
-                            msg.edit(redEmbed)
+                            update()
                             //r.remove(r.users.filter(u => u === receivedMessage.author).first())
                         })
                         
@@ -57,12 +64,7 @@ module.exports = {
                                 return
                             }
                             page++
-                            redEmbed.setFooter(`${pages[page - 1].score} upvotes | Submitted by u/${pages[page - 1].author} | Post ${page} of ${pages.length}`)
-                            redEmbed.setTitle(pages[page - 1].title)
-                            redEmbed.setDescription(pages[page - 1].selftext)
-                            redEmbed.setImage(pages[page - 1].url)
-                            redEmbed.setURL(`https://reddit.com${pages[page - 1].permalink}`)
-                            msg.edit(redEmbed)
+                            update()
                             //r.remove(r.users.filter(u => u === receivedMessage.author).first())
                         })
                     })
