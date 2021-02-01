@@ -17,7 +17,7 @@
     "url": "https://github.com/jaynav1/jab/issues"
   },
   "dependencies": {
-    "discord.js": "^12.0.1",
+    "discord.js": "^12.5.1",
     "node-fetch": "^2.6.0",
     "qrcode": "^1.4.4",
     "webhook-discord": "^3.5.1",

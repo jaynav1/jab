@@ -1,6 +1,6 @@
 const Discord = require ('discord.js')
 const WolframAlphaAPI = require('wolfram-alpha-api')
-const { prefix, token, WAkey } = require('./config.json')
+const { prefix, token, WAkey } = require('../config.json')
 const waApi = WolframAlphaAPI(WAkey)
 
 
