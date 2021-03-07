@@ -1,0 +1,11 @@
+---
+application:
+  name: "jab"
+  project: "bots"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-jab"
+  routes:
+  - application_name: "jab"
+    paths:
+    - "/*"
