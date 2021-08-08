@@ -1,5 +1,7 @@
 const fetch = require("node-fetch")
 const Discord = require ('discord.js')
+const db = require('quick.db');
+var moment = require('moment');
 
 module.exports = {
 	name: 'cases',
@@ -17,7 +19,9 @@ module.exports = {
             if (isNaN(today)) {
                 receivedMessage.channel.send(`please input a number`)
             } else {
-                receivedMessage.channel.send(`there are ${today} new cases today`)
+                var date = moment().format('D-M-YYYY')
+                receivedMessage.channel.send(`there are ${today} new cases today ${date}`)
+                db.set('cases', { date : today })
             }
         } else {
             const casesEmbed = new Discord.MessageEmbed()
