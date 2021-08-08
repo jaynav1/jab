@@ -12,16 +12,19 @@ module.exports = {
             if (isNaN(prediction)) {
                 receivedMessage.channel.send(`please input a number`)
             } else {
-                receivedMessage.channel.send(`you predicted ${prediction} cases`)
+                var datetomorrow  = moment().add(1,'days').format('D-M-YYYY')
+                receivedMessage.channel.send(`you predicted ${prediction} cases for ${datetomorrow}`)
+                senderid = receivedMessage.author.id
+                db.set(`players.${senderid}`, { datetomorrow : prediction })
             }
         } else if (arguments[0] == 'set') {
-            var today = parseInt(arguments[1])
-            if (isNaN(today)) {
+            var todaycases = parseInt(arguments[1])
+            if (isNaN(todaycases)) {
                 receivedMessage.channel.send(`please input a number`)
             } else {
-                var date = moment().format('D-M-YYYY')
-                receivedMessage.channel.send(`there are ${today} new cases today ${date}`)
-                db.set('cases', { date : today })
+                var datetoday = moment().format('D-M-YYYY')
+                receivedMessage.channel.send(`there are ${todaycases} new cases today ${datetoday}`)
+                db.set('cases', { datetoday : todaycases })
             }
         } else {
             const casesEmbed = new Discord.MessageEmbed()

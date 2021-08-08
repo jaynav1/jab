@@ -90,3 +90,5 @@ typings/
 # Config files
 config.json
 .env
+
+*.sqlite
